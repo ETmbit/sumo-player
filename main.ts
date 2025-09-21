@@ -429,13 +429,7 @@ basic.forever(function () {
 namespace SumoPlayer {
 
     let fielddiameter = 40 // cm
-
-    //% color="#FFCC00"
-    //% block="when the robot is out of the field"
-    //% block.loc.nl="wanneer de robot buiten het speelveld is"
-    export function onOutOfField(code: () => handler) {
-        outOfFieldHandler = code()
-    }
+    let speed = 15
 
     //% block="at %side out of the field"
     //% block="aan %side uit het veld"
@@ -454,17 +448,12 @@ namespace SumoPlayer {
         CutebotPro.speed(0, 0)
     }
 
-    //% block="move %dir and %bend"
-    //% block.loc.nl="rijd %dir en %bend"
-    export function move(dir: Move, bend: Bend) {
-        let speed: number
-        if (dir == Move.Forward) speed = 20
-        else speed = -20
-        switch (bend) {
-            case Bend.None: CutebotPro.speed(speed, speed); break;
-            case Bend.Left: CutebotPro.speed(speed / 2, speed); break;
-            case Bend.Right: CutebotPro.speed(speed, speed / 2); break;
-        }
+    //% block="drive back"
+    //% block.loc.nl="rijd terug"
+    export function moveBackward() {
+        CutebotPro.speed(-15, -15)
+        basic.pause(1000)
+        CutebotPro.speed(0, 0)
     }
 
     //% block="push the opponent"
@@ -496,6 +485,54 @@ namespace SumoPlayer {
             basic.pause(1)
         }
         CutebotPro.speed(0, 0)
+    }
+
+    //% color="#FFCC00"
+    //% block="when the robot is out of the field"
+    //% block.loc.nl="wanneer de robot buiten het speelveld is"
+    export function onOutOfField(code: () => void): void {
+        outOfFieldHandler = code
+    }
+
+    //% subcategory="Pro"
+    //% color="#00CC00"
+    //% block="distance (cm)"
+    //% block.loc.nl="afstand (cm)"
+    export function distance(): number {
+        return CutebotPro.readDistance()
+    }
+
+    //% subcategory="Pro"
+    //% color="#00CC00"
+    //% block="set speed to %speed \\%"
+    //% block.loc.nl="stel de snelheid inop %speed \\%"
+    //% speed.min=0 speed.max=100
+    export function setSpeed(_speed: number) {
+        speed = _speed
+    }
+
+    //% subcategory="Pro"
+    //% block="turn %rotation"
+    //% block.loc.nl="draai %rotation"
+    export function turn(rotation: Rotate) {
+        if (rotation == Rotate.Clockwise)
+            CutebotPro.speed(-speed, speed)
+        else
+            CutebotPro.speed(speed, -speed)
+    }
+
+    //% subcategory="Pro"
+    //% block="move %dir and %bend"
+    //% block.loc.nl="rijd %dir en %bend"
+    export function move(dir: Move, bend: Bend) {
+        let spd: number
+        if (dir == Move.Forward) speed = speed
+        else spd = -speed
+        switch (bend) {
+            case Bend.None: CutebotPro.speed(spd, spd); break;
+            case Bend.Left: CutebotPro.speed(spd / 2, spd); break;
+            case Bend.Right: CutebotPro.speed(spd, spd / 2); break;
+        }
     }
 
     //% subcategory="Show"
