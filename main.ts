@@ -415,10 +415,12 @@ let outOfFieldHandler: handler
 basic.forever(function () {
     if (isPlaying && !isPlaying()) return
     if (CutebotPro.readTrack() != Track.OffTrack) {
+        OUTOFFIELD = true
         CutebotPro.ledColor(Led.Both, Color.Red)
         if (outOfFieldHandler) outOfFieldHandler()
     }
     else {
+        OUTOFFIELD = false
         if (showPlayerHandler) showPlayerHandler()
     }
 })
