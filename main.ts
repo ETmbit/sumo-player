@@ -400,15 +400,15 @@ showPlayerHandler = () => {
 
 resetHandler = () => {
     SumoPlayer.stop()
+    if (initPlayerHandler) initPlayerHandler()
+    if (displayHandler) displayHandler()
+    CutebotPro.setTrackType(TrackType.WhiteOnBlack)
 }
+resetHandler()
 
 stopHandler = () => {
     SumoPlayer.stop()
 }
-
-if (initPlayerHandler) initPlayerHandler()
-if (displayHandler) displayHandler()
-CutebotPro.setTrackType(TrackType.WhiteOnBlack)
 
 let outOfFieldHandler: handler
 
