@@ -6,7 +6,7 @@
         "radio": "*",
         "microphone": "*",
         "general": "github:ETmbit/general#50a144080fdbd8fb9bbefaa9a369108262fa31d4",
-        "match": "github:ETmbit/match#191656141aa933f8a0672849baaa5e4ad64b18fa"
+        "match": "github:etmbit/match#b8ab99a5f83211db6a8cfce8d8b0f8a51ba1b752"
     },
     "files": [
         "main.blocks",
