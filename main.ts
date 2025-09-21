@@ -423,7 +423,7 @@ basic.forever(function () {
     }
 })
 
-//% color="#00CC00" icon="\uf1f9"
+//% color="#00CC00" icon="\uf0c1"
 //% block="Sumo"
 //% block.loc.nl="Sumo"
 namespace SumoPlayer {
@@ -500,19 +500,19 @@ namespace SumoPlayer {
 
     //% subcategory="Show"
     //% color="#00CC00"
+    //% block="turn both leds off"
+    //% block.loc.nl="zet beide leds uit"
+    export function ledsOff() {
+        CutebotPro.ledColor(Led.Both, Color.None)
+    }
+
+    //% subcategory="Show"
+    //% color="#00CC00"
     //% block="turn %led color %color"
     //% block.loc.nl="kleur %led %color"
     //% color.defl=Color.White
     export function showColor(led: Led, color: Color) {
         CutebotPro.ledColor(led, color)
-    }
-
-    //% subcategory="Show"
-    //% color="#00CC00"
-    //% block="turn both leds off"
-    //% block.loc.nl="schakel beide leds uit"
-    export function ledsOff() {
-        CutebotPro.ledColor(Led.Both, Color.None)
     }
 
     //% subcategory="Show"
