@@ -431,12 +431,6 @@ namespace SumoPlayer {
     let fielddiameter = 40 // cm
     let speed = 15
 
-    //% block="stop"
-    //% block.loc.nl="stop"
-    export function stop() {
-        CutebotPro.speed(0, 0)
-    }
-
     //% block="drive back"
     //% block.loc.nl="rijd terug"
     export function moveBackward() {
@@ -481,6 +475,13 @@ namespace SumoPlayer {
     //% block.loc.nl="wanneer de robot buiten het speelveld is"
     export function onOutOfField(code: () => void): void {
         outOfFieldHandler = code
+    }
+
+    //% subcategory="Pro"
+    //% block="stop"
+    //% block.loc.nl="stop"
+    export function stop() {
+        CutebotPro.speed(0, 0)
     }
 
     //% subcategory="Pro"
