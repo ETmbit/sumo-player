@@ -478,13 +478,6 @@ namespace SumoPlayer {
     }
 
     //% subcategory="Pro"
-    //% block="stop"
-    //% block.loc.nl="stop"
-    export function stop() {
-        CutebotPro.speed(0, 0)
-    }
-
-    //% subcategory="Pro"
     //% block="at %side out of the field"
     //% block="aan %side uit het veld"
     export function isOutOfField(side: Side): boolean {
@@ -502,6 +495,13 @@ namespace SumoPlayer {
     //% block.loc.nl="afstand (cm)"
     export function distance(): number {
         return CutebotPro.readDistance()
+    }
+
+    //% subcategory="Pro"
+    //% block="stop"
+    //% block.loc.nl="stop"
+    export function stop() {
+        CutebotPro.speed(0, 0)
     }
 
     //% subcategory="Pro"
