@@ -1,0 +1,27 @@
+{
+    "name": "sumo-player",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microphone": "*",
+        "general": "github:ETmbit/general#50a144080fdbd8fb9bbefaa9a369108262fa31d4",
+        "match": "github:ETmbit/match#191656141aa933f8a0672849baaa5e4ad64b18fa"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "8.0.16",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}
