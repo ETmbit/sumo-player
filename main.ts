@@ -431,17 +431,6 @@ namespace SumoPlayer {
     let fielddiameter = 40 // cm
     let speed = 15
 
-    //% block="at %side out of the field"
-    //% block="aan %side uit het veld"
-    export function isOutOfField(side: Side): boolean {
-        switch (side) {
-            case Side.Both:     return !CutebotPro.isOffTrack()
-            case Side.Left:     return CutebotPro.isTrackAtLeft()
-            case Side.Right:    return CutebotPro.isTrackAtRight()
-        }
-        return false
-    }
-
     //% block="stop"
     //% block.loc.nl="stop"
     export function stop() {
@@ -495,6 +484,18 @@ namespace SumoPlayer {
     }
 
     //% subcategory="Pro"
+    //% block="at %side out of the field"
+    //% block="aan %side uit het veld"
+    export function isOutOfField(side: Side): boolean {
+        switch (side) {
+            case Side.Both: return !CutebotPro.isOffTrack()
+            case Side.Left: return CutebotPro.isTrackAtLeft()
+            case Side.Right: return CutebotPro.isTrackAtRight()
+        }
+        return false
+    }
+
+    //% subcategory="Pro"
     //% color="#00CC00"
     //% block="distance (cm)"
     //% block.loc.nl="afstand (cm)"
@@ -505,7 +506,7 @@ namespace SumoPlayer {
     //% subcategory="Pro"
     //% color="#00CC00"
     //% block="set speed to %speed \\%"
-    //% block.loc.nl="stel de snelheid inop %speed \\%"
+    //% block.loc.nl="stel de snelheid in op %speed \\%"
     //% speed.min=0 speed.max=100
     export function setSpeed(_speed: number) {
         speed = _speed
