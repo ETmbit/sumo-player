@@ -465,10 +465,12 @@ namespace SumoPlayer {
     //% block.loc.nl="draai richting tegenstander"
     export function findOpponent() {
         CutebotPro.speed(-15, 15)
-        while (CutebotPro.readDistance() > fielddiameter) {
+        let distance = CutebotPro.readDistance()
+        do {
             if (isPlaying && !isPlaying()) return
+            distance = CutebotPro.readDistance()
             basic.pause(1)
-        }
+        } while (distance == 0 || distance > fielddiameter)
         CutebotPro.speed(0, 0)
     }
 
