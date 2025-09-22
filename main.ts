@@ -328,7 +328,10 @@ namespace CutebotPro {
         // the next code is replacing the original since
         // driving the motors causes interference with pulseIn
 
-        while (!pins.digitalReadPin(DigitalPin.P12)) { }
+        let tm = input.runningTime() + 500
+        while (!pins.digitalReadPin(DigitalPin.P12)) {
+            if (tm < input.runningTime()) return 999 // fault timeout
+        }
         let tm1 = input.runningTimeMicros()
         while (pins.digitalReadPin(DigitalPin.P12)) {
             if (input.runningTimeMicros() - tm1 > 7288)
